@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581002144158.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3507459054",
+    "id" : "E38292E2",
+    "lastKnownWriteTime" : 1581086944,
+    "last_content_update" : 1581086944818,
+    "path" : "C:/Users/dungv/OneDrive/Máy tính/DATA SCIENCE/data science for business/data-mining-with-r/algae bloom/chapter 2.R",
+    "project_path" : "chapter 2.R",
+    "properties" : {
+        "cursorPosition" : "61,28",
+        "scrollLine" : "53",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
