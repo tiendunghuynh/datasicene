@@ -69,3 +69,4 @@ manyNAs(algae, 0.2)
 algae <- algae[-manyNAs(algae), ]
 
 #Filling in the Unknowns with the Most Frequent Values
+#hello github

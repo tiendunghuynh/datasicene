@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581136819110.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C80C6B3A",
+    "lastKnownWriteTime" : 2314885530818453536,
+    "last_content_update" : 1581136819110,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7737DC7",
+        "caption" : "algae",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=algae&cache_key=7737DC7",
+        "displayedObservations" : "200",
+        "environment" : "",
+        "expression" : "algae",
+        "object" : "algae",
+        "preview" : "0",
+        "totalObservations" : "200",
+        "variables" : "18"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
