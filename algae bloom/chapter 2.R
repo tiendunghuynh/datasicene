@@ -70,3 +70,15 @@ algae <- algae[-manyNAs(algae), ]
 
 #Filling in the Unknowns with the Most Frequent Values
 #hello github
+data("algae")
+algae[48, "mxPH"] <- mean(algae$mxPH, na.rm = T)
+algae[48, ]
+
+plot(algae$Chla,xlab = "")
+abline(h = mean(algae$Chla, na.rm = T), lty = 1)
+abline(h = mean(algae$Chla, na.rm = T) + sd(algae$Chla, na.rm = T), lty = 2 )
+abline(h = median(algae$Chla, na.rm = T), lty = 3)
+click <- identify(algae$Chla) #show row number in the algae data frame
+algae[click, ]
+
+  
