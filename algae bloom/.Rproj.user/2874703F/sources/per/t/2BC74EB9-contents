@@ -7,7 +7,7 @@ algae <- read.table('Analysis.txt',
                                   'NO3','NH4','oPO4','PO4','Chla','a1','a2',
                                   'a3','a4', 'a5','a6','a7'),
                     na.strings=c('XXXXXXX')
-                    )
+)
 View(algae)
 summary(algae)
 
@@ -74,11 +74,41 @@ data("algae")
 algae[48, "mxPH"] <- mean(algae$mxPH, na.rm = T)
 algae[48, ]
 
-plot(algae$Chla,xlab = "")
-abline(h = mean(algae$Chla, na.rm = T), lty = 1)
-abline(h = mean(algae$Chla, na.rm = T) + sd(algae$Chla, na.rm = T), lty = 2 )
-abline(h = median(algae$Chla, na.rm = T), lty = 3)
-click <- identify(algae$Chla) #show row number in the algae data frame
-algae[click, ]
+algae[is.na(algae$Chla), "Chla"] <- median(algae$Chla, na.rm = T)
 
-  
+data(algae)
+algae <- algae[-manyNAs(algae), ]
+algae <- centralImputation(algae)
+
+#Filling in the Unknown Values by Exploring Correlations
+symnum(cor(algae[, 4:18], use = "complete.obs"))
+
+# find the form of the linear correlation
+data("algae")
+algae <- algae[-manyNAs(algae), ]
+lm(PO4 ~ oPO4, data = algae)
+
+algae[28, "PO4"] <- 42.897 + 1.293 * algae[28,"oPO4"]
+algae[28, ]
+
+# use the linear relationship to fill all the unknowns
+data("algae")
+algae <- algae[-manyNAs(algae), ]
+fillPO4 <- function(oP) {
+  if (is.na(oP))
+    return(NA)
+  else return(42.897 + 1.293*oP)
+}
+algae[is.na(algae$PO4), "PO4"] <- sapply(algae[is.na(algae$PO4), "oPO4"], fillPO4)
+
+fillPO4(6.4)
+#lattice R
+histogram(~mxPH | season, data = algae)
+# the natural temporal ordering of the seasons
+algae$season <- factor(algae$season, level = c("spring", "summer", "autumn", "winter"))
+histogram(~mxPH | season, data = algae)
+
+histogram(~mxPH | size, data = algae)
+stripplot(size~mxPH|speed, data = algae, jitter = T)
+
+#Filling in the Unknown Values by Exploring Similarities between Cases
