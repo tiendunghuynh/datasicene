@@ -112,3 +112,17 @@ histogram(~mxPH | size, data = algae)
 stripplot(size~mxPH|speed, data = algae, jitter = T)
 
 #Filling in the Unknown Values by Exploring Similarities between Cases
+data("algae")
+algae <- algae[-manyNAs(algae), ]
+
+algae <- knnImputation(algae, k = 10)
+algae <- knnImputation(algae, k = 10, meth = "median")
+
+#2.6 Obtaining Prediction Models
+# Multiple Linear Regression
+
+data("algae")
+algae <- algae[-manyNAs(algae), ]
+clean.algae <- knnImputation(algae, k = 10)
+lm.a1 <- lm(a1~., data = clean.algae[,1:12])
+summary(lm.a1)
