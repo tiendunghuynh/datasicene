@@ -126,3 +126,31 @@ algae <- algae[-manyNAs(algae), ]
 clean.algae <- knnImputation(algae, k = 10)
 lm.a1 <- lm(a1~., data = clean.algae[,1:12])
 summary(lm.a1)
+anova(lm.a1)
+# removing the variable season from the lm.a1 model
+lm2.a1 <- update(lm.a1, .~.-season)
+summary(lm2.a1)
+# comparison between the two models
+anova(lm.a1,lm2.a1)
+#applying the backward elimination method to the initial model
+final.lm <- step(lm.a1)
+#obtain the information on the final model
+summary(final.lm)
+
+#Regression Trees
+library(rpart)
+data(algae)
+algae <- algae[-manyNAs(algae), ]
+rt.a1 <- rpart(a1~.,data = algae[,1:12])
+rt.a1
+# the visualization of the tree
+prettyTree(rt.a1)
+#cost complexity pruning
+printcp(rt.a1)
+rt2.a1 <- prune(rt.a1, cp = 0.08)
+rt2.a1
+(rt.a1 <- rpartXse(a1~., data = algae[,1:12]))
+first.tree <- rpart(a1~.,data = algae[,1:12])
+snip.rpart(first.tree, c(4,7))
+prettyTree(first.tree)
+snip.rpart(first.tree)
